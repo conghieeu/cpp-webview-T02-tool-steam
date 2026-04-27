@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tactical Dark Web App - Position &amp; Size</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FF5500",
+          "background-dark": "#0A0A0C",
+          "surface": "#121216",
+          "surface-hover": "#1A1A20",
+          "text-main": "#EAEAEA",
+          "muted": "#8B8B99",
+          "border-color": "#2A2A35",
+          "accent-danger": "#FF3333"
+        },
+        fontFamily: {
+          "heading": ["Rajdhani", "sans-serif"],
+          "body": ["Space Grotesk", "sans-serif"]
+        },
+        borderRadius: {
+          "none": "0px",
+          "sm": "2px",
+          "DEFAULT": "2px",
+          "md": "2px",
+          "lg": "2px",
+          "xl": "2px",
+          "2xl": "2px",
+          "3xl": "2px",
+          "full": "2px"
+        },
+        boxShadow: {
+          'glow': '0 0 12px rgba(255, 85, 0, 0.5)',
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: theme('colors.background-dark');
+    color: theme('colors.text-main');
+  }
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  /* Custom Range Slider Styling */
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 2px;
+    background: #EAEAEA;
+    cursor: pointer;
+    margin-top: -6px;
+    border: 1px solid #2A2A35;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #2A2A35;
+    border-radius: 0;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+</style>
+</head>
+<body class="bg-background-dark text-text-main h-screen overflow-hidden flex">
+<div class="relative flex h-full w-full flex-row bg-background-dark overflow-hidden font-body">
+<!-- Sidebar Container -->
+<div class="w-[240px] flex flex-col justify-between bg-surface border-r border-border-color h-full flex-shrink-0 z-10">
+<div class="flex flex-col gap-4 p-4">
+<h1 class="text-primary font-heading uppercase text-2xl font-bold leading-normal tracking-wide flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">target</span>
+        Overlay Config
+      </h1>
+<div class="flex flex-col gap-1 mt-4">
+<span class="text-muted text-[12px] uppercase font-bold tracking-wider mb-2 px-3">Customization</span>
+<div class="flex items-center gap-3 px-3 h-[40px] text-muted hover:text-text-main hover:bg-surface-hover cursor-pointer transition-colors">
+<p class="text-sm font-medium leading-normal">Display Modes</p>
+</div>
+<!-- Active State: Crosshairs -->
+<div class="flex items-center gap-3 px-3 h-[40px] text-white bg-primary shadow-glow cursor-default border-l-[3px] border-white">
+<p class="text-sm font-bold leading-normal">Crosshairs</p>
+</div>
+<div class="flex items-center gap-3 px-3 h-[40px] text-muted hover:text-text-main hover:bg-surface-hover cursor-pointer transition-colors">
+<p class="text-sm font-medium leading-normal">Position &amp; Size</p>
+</div>
+<span class="text-muted text-[12px] uppercase font-bold tracking-wider mb-2 mt-4 px-3">Essentials</span>
+<div class="flex items-center gap-3 px-3 h-[40px] text-muted hover:text-text-main hover:bg-surface-hover cursor-pointer transition-colors">
+<p class="text-sm font-medium leading-normal">Options</p>
+</div>
+<div class="flex items-center gap-3 px-3 h-[40px] text-muted hover:text-text-main hover:bg-surface-hover cursor-pointer transition-colors">
+<p class="text-sm font-medium leading-normal">Help</p>
+</div>
+</div>
+</div>
+<!-- Social Dock -->
+<div class="flex flex-row gap-4 p-6 border-t border-border-color justify-center">
+<span class="material-symbols-outlined text-muted hover:text-primary cursor-pointer text-2xl">chat</span>
+<span class="material-symbols-outlined text-muted hover:text-primary cursor-pointer text-2xl">play_circle</span>
+<span class="material-symbols-outlined text-muted hover:text-primary cursor-pointer text-2xl">public</span>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Warning Banner -->
+<div class="w-full bg-surface border-y border-border-color border-l-[4px] border-l-primary py-3 px-6 flex items-center justify-between z-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">warning</span>
+<p class="text-sm font-medium text-text-main">Warning: Conflicting overlay settings detected from external software. Alignment may be affected.</p>
+</div>
+<button class="text-muted hover:text-text-main">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Header -->
+<header class="flex h-[64px] items-center justify-between whitespace-nowrap border-b border-solid border-border-color px-8 flex-shrink-0 bg-background-dark">
+<div class="flex items-center gap-4 text-text-main">
+<h2 class="font-heading uppercase text-2xl font-bold leading-tight tracking-wide text-text-main">Position &amp; Size</h2>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-muted">Hidden</span>
+<!-- Toggle Switch -->
+<div class="w-[40px] h-[20px] bg-border-color rounded-sm relative cursor-pointer flex items-center p-[2px]">
+<div class="w-[16px] h-[16px] bg-muted rounded-sm"></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
+<!-- Section Header -->
+<div class="flex flex-col gap-2 max-w-[800px]">
+<h3 class="font-heading text-xl font-bold uppercase text-text-main tracking-wider">Overlay Calibration</h3>
+<p class="text-muted text-sm font-normal leading-relaxed">Fine-tune the exact positioning and scaling of the tactical overlay. Measurements are calculated relative to the primary display resolution.</p>
+</div>
+<div class="flex flex-col gap-6 max-w-[800px]">
+<!-- X-Axis Control -->
+<div class="bg-surface border border-border-color p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center w-full">
+<div class="flex flex-col">
+<label class="text-text-main text-base font-bold uppercase font-heading tracking-wide">X-Axis Offset</label>
+<span class="text-muted text-xs">Horizontal alignment from center</span>
+</div>
+<div class="bg-background-dark border border-border-color px-3 py-1 min-w-[60px] text-center">
+<span class="text-primary font-bold">0px</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<span class="text-muted text-xs w-[40px] text-right">-100%</span>
+<div class="flex-1 relative h-6 flex items-center">
+<div class="absolute w-full h-[4px] bg-border-color"></div>
+<div class="absolute w-[50%] h-[4px] bg-primary left-0"></div>
+<div class="absolute h-4 w-4 bg-text-main border border-border-color left-[50%] -translate-x-1/2 cursor-pointer shadow-glow"></div>
+<div class="absolute w-[2px] h-[12px] bg-muted left-[50%] -translate-x-1/2 opacity-50 z-0"></div>
+</div>
+<span class="text-muted text-xs w-[40px] text-left">+100%</span>
+</div>
+</div>
+<!-- Y-Axis Control -->
+<div class="bg-surface border border-border-color p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center w-full">
+<div class="flex flex-col">
+<label class="text-text-main text-base font-bold uppercase font-heading tracking-wide">Y-Axis Offset</label>
+<span class="text-muted text-xs">Vertical alignment from center</span>
+</div>
+<div class="bg-background-dark border border-border-color px-3 py-1 min-w-[60px] text-center">
+<span class="text-primary font-bold">0px</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<span class="text-muted text-xs w-[40px] text-right">-100%</span>
+<div class="flex-1 relative h-6 flex items-center">
+<div class="absolute w-full h-[4px] bg-border-color"></div>
+<div class="absolute w-[50%] h-[4px] bg-primary left-0"></div>
+<div class="absolute h-4 w-4 bg-text-main border border-border-color left-[50%] -translate-x-1/2 cursor-pointer shadow-glow"></div>
+<div class="absolute w-[2px] h-[12px] bg-muted left-[50%] -translate-x-1/2 opacity-50 z-0"></div>
+</div>
+<span class="text-muted text-xs w-[40px] text-left">+100%</span>
+</div>
+</div>
+<!-- Global Scale Control -->
+<div class="bg-surface border border-border-color p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center w-full">
+<div class="flex flex-col">
+<label class="text-text-main text-base font-bold uppercase font-heading tracking-wide">Global Scale</label>
+<span class="text-muted text-xs">Overall size of the overlay elements</span>
+</div>
+<div class="bg-background-dark border border-border-color px-3 py-1 min-w-[60px] text-center">
+<span class="text-primary font-bold">1.0x</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<span class="text-muted text-xs w-[40px] text-right">0.5x</span>
+<div class="flex-1 relative h-6 flex items-center">
+<div class="absolute w-full h-[4px] bg-border-color"></div>
+<div class="absolute w-[33%] h-[4px] bg-primary left-0"></div>
+<div class="absolute h-4 w-4 bg-text-main border border-border-color left-[33%] -translate-x-1/2 cursor-pointer"></div>
+</div>
+<span class="text-muted text-xs w-[40px] text-left">2.0x</span>
+</div>
+</div>
+<!-- Alignment Presets -->
+<div class="mt-4 flex flex-col gap-3">
+<label class="text-text-main text-sm font-bold uppercase font-heading tracking-wide">Quick Align Presets</label>
+<div class="grid grid-cols-3 gap-4">
+<button class="h-[40px] bg-surface border border-border-color text-muted hover:text-primary hover:border-primary transition-colors text-sm font-bold uppercase font-heading tracking-wider flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">align_horizontal_center</span>
+              Center All
+            </button>
+<button class="h-[40px] bg-surface border border-border-color text-muted hover:text-primary hover:border-primary transition-colors text-sm font-bold uppercase font-heading tracking-wider flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">vertical_align_top</span>
+              Top Edge
+            </button>
+<button class="h-[40px] bg-surface border border-border-color text-muted hover:text-primary hover:border-primary transition-colors text-sm font-bold uppercase font-heading tracking-wider flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">vertical_align_bottom</span>
+              Bottom Edge
+            </button>
+</div>
+</div>
+<!-- Action Row -->
+<div class="mt-8 flex justify-end gap-4 pt-6 border-t border-border-color">
+<button class="h-[40px] px-6 bg-transparent border border-border-color text-text-main hover:bg-surface-hover transition-colors font-heading uppercase font-bold tracking-wider text-sm">
+            Reset to Default
+          </button>
+<button class="h-[40px] w-[120px] bg-primary text-background-dark hover:brightness-125 transition-all font-heading uppercase font-bold tracking-wider text-base shadow-glow">
+            Apply
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

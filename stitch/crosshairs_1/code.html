@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tactical Dark - Crosshairs</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FF5500",
+          "background-light": "#0A0A0C",
+          "background-dark": "#0A0A0C",
+          "surface": "#121216",
+          "surface-hover": "#1A1A20",
+          "text": "#EAEAEA",
+          "muted": "#8B8B99",
+          "border": "#2A2A35",
+          "accent": "#FF3333"
+        },
+        fontFamily: {
+          "display": ["Space Grotesk", "sans-serif"],
+          "heading": ["Rajdhani", "sans-serif"],
+          "body": ["Space Grotesk", "sans-serif"]
+        },
+        borderRadius: {"DEFAULT": "0px", "sm": "2px", "lg": "0px", "xl": "0px", "full": "9999px"},
+        boxShadow: {
+          'glow-primary': '0 0 12px rgba(255, 85, 0, 0.5)',
+          'glow-inset': 'inset 0 0 15px rgba(255, 85, 0, 0.1)',
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: theme('colors.background-dark');
+    color: theme('colors.text');
+  }
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  /* Shared Component Specific Styles (Overridden slightly for tactical dark theme) */
+  .layout-container { display: flex; }
+  
+  /* Hide the old background colors from the shared component, use tailwind config */
+  .bg-\[\#231610\], .bg-\[\#231610\] { background-color: theme('colors.background-dark') !important; }
+  .bg-\[\#4a2f21\] { background-color: theme('colors.surface') !important; }
+  .border-b-\[\#4a2f21\] { border-color: theme('colors.border') !important; }
+  .text-\[\#cca38e\] { color: theme('colors.muted') !important; }
+  
+  /* specific crosshair hover */
+  .crosshair-card:hover svg {
+    transform: scale(1.1);
+    transition: transform 200ms ease;
+  }
+  .crosshair-card svg {
+    transition: transform 200ms ease;
+  }
+</style>
+</head>
+<body class="bg-background-dark text-text antialiased overflow-x-hidden min-h-[1024px] flex flex-col">
+<!-- Shared Component: SideNavBar + Main Content Shell -->
+<div class="relative flex h-auto min-h-[1024px] w-full bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow">
+<!-- Left Sidebar -->
+<div class="flex h-[1024px] sticky top-0 w-[240px] flex-col justify-between bg-surface p-4 border-r border-border shrink-0 z-10">
+<div class="flex flex-col gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center shadow-glow-primary">
+<span class="material-symbols-outlined text-background-dark font-bold text-xl" data-icon="token">token</span>
+</div>
+<h1 class="text-text text-xl font-heading font-bold uppercase tracking-wide leading-none">Tactical Dark</h1>
+</div>
+<!-- Navigation Groups -->
+<div class="flex flex-col gap-6">
+<!-- Customization Group -->
+<div class="flex flex-col gap-2">
+<p class="text-muted text-xs font-bold uppercase tracking-wider px-3">Customization</p>
+<a class="flex items-center gap-3 px-3 py-2 text-muted hover:text-text hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="monitor">monitor</span>
+<p class="text-sm font-medium leading-normal">Display Modes</p>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 text-primary bg-surface-hover border-l-2 border-primary shadow-[inset_2px_0_0_0_#FF5500] relative" href="#">
+<div class="absolute left-0 top-0 bottom-0 w-[1px] bg-primary shadow-glow-primary"></div>
+<span class="material-symbols-outlined text-[20px]" data-icon="target">target</span>
+<p class="text-sm font-medium leading-normal">Crosshairs</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-muted hover:text-text hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="aspect_ratio">aspect_ratio</span>
+<p class="text-sm font-medium leading-normal">Position &amp; Size</p>
+</a>
+</div>
+<!-- Essentials Group -->
+<div class="flex flex-col gap-2">
+<p class="text-muted text-xs font-bold uppercase tracking-wider px-3">Essentials</p>
+<a class="flex items-center gap-3 px-3 py-2 text-muted hover:text-text hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<p class="text-sm font-medium leading-normal">Options</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-muted hover:text-text hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<p class="text-sm font-medium leading-normal">Help</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Social Dock -->
+<div class="flex items-center justify-center gap-4 py-4 border-t border-border mt-auto">
+<a class="text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="chat">chat</span></a>
+<a class="text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span></a>
+<a class="text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="forum">forum</span></a>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 w-[calc(100vw-240px)] min-h-[1024px] bg-background-dark relative">
+<!-- Top Bar / Header -->
+<header class="h-[64px] flex items-center justify-between px-8 border-b border-border bg-background-dark shrink-0">
+<div class="flex items-center gap-4">
+</div>
+<!-- Toggle Switch -->
+<div class="flex items-center gap-3">
+<span class="text-sm text-text font-medium">Hidden</span>
+<button aria-label="Toggle Hidden" class="relative w-10 h-5 bg-surface border border-border rounded-full cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary group">
+<div class="absolute left-1 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-glow-primary transition-transform translate-x-[20px]"></div>
+</button>
+</div>
+</header>
+<!-- Warning Banner -->
+<div class="relative bg-surface border border-primary border-l-4 p-3 flex items-center justify-between mx-8 mt-6">
+<div class="flex items-center gap-3 text-text">
+<span class="material-symbols-outlined text-primary" data-icon="warning">warning</span>
+<p class="text-sm">Overlay hooks are currently disabled. Restart application to apply changes globally.</p>
+</div>
+<button class="text-muted hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Screen Content -->
+<main class="flex-1 p-8">
+<!-- Header -->
+<div class="flex flex-col gap-1 mb-8">
+<h2 class="font-heading text-3xl font-bold uppercase text-text tracking-wide">Crosshairs</h2>
+<p class="text-muted text-sm">Select, customize, and preview your reticle</p>
+</div>
+<!-- Crosshair Grid -->
+<div class="grid grid-cols-4 gap-4 max-w-[800px]">
+<!-- Active Card -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-primary flex items-center justify-center shadow-glow-inset focus:outline-none cursor-pointer relative group">
+<svg class="text-primary w-8 h-8" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11 2v9H2v2h9v9h2v-9h9v-2h-9V2h-2z"></path>
+</svg>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+<!-- Standard Card 1 -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-border flex items-center justify-center hover:border-muted focus:outline-none cursor-pointer group">
+<svg class="text-text group-hover:text-primary w-10 h-10 transition-colors" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h4v2h-4v4h-2v-4H7v-2h4V7z"></path>
+</svg>
+</button>
+<!-- Standard Card 2 -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-border flex items-center justify-center hover:border-muted focus:outline-none cursor-pointer group">
+<svg class="text-text group-hover:text-primary w-8 h-8 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" fill="currentColor" r="3"></circle>
+<path d="M12 2v6m0 8v6m10-10h-6m-8 0H2"></path>
+</svg>
+</button>
+<!-- Standard Card 3 -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-border flex items-center justify-center hover:border-muted focus:outline-none cursor-pointer group">
+<svg class="text-text group-hover:text-primary w-10 h-10 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L2 12l10 10 10-10L12 2zm0 16.5L5.5 12 12 5.5 18.5 12 12 18.5z"></path>
+<circle cx="12" cy="12" fill="currentColor" r="1.5" stroke="none"></circle>
+</svg>
+</button>
+<!-- Standard Card 4 -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-border flex items-center justify-center hover:border-muted focus:outline-none cursor-pointer group">
+<svg class="text-text group-hover:text-primary w-8 h-8 transition-colors" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
+</svg>
+</button>
+<!-- Standard Card 5 -->
+<button class="crosshair-card w-[120px] h-[120px] bg-surface border border-border flex items-center justify-center hover:border-muted focus:outline-none cursor-pointer group">
+<svg class="text-text group-hover:text-primary w-10 h-10 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path class="" d="M5 5l4 4m6-4l-4 4m4 10l-4-4m-6 4l4-4"></path>
+<circle cx="12" cy="12" fill="currentColor" r="1" stroke="none"></circle>
+</svg>
+</button>
+<!-- Upload Button -->
+<button class="w-[120px] h-[120px] bg-transparent border border-dashed border-border flex flex-col items-center justify-center hover:border-primary hover:text-primary text-muted focus:outline-none cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-2xl mb-1 group-hover:scale-110 transition-transform" data-icon="add">add</span>
+<span class="text-[10px] uppercase font-bold tracking-wider">Upload</span>
+</button>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body></html>

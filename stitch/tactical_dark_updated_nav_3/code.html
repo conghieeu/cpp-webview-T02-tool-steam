@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tactical Dark - Help &amp; Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#f95706",
+          "background-light": "#f8f6f5",
+          "background-dark": "#23160f",
+          
+          /* Product Specific Overrides mapped to theme */
+          "tactical-primary": "#FF5500",
+          "tactical-bg": "#0A0A0C",
+          "tactical-surface": "#121216",
+          "tactical-surface-hover": "#1A1A20",
+          "tactical-text": "#EAEAEA",
+          "tactical-muted": "#8B8B99",
+          "tactical-border": "#2A2A35",
+          "tactical-accent": "#FF3333",
+          "discord-blue": "#5865F2"
+        },
+        fontFamily: {
+          "display": ["Rajdhani", "sans-serif"],
+          "body": ["Space Grotesk", "sans-serif"]
+        },
+        boxShadow: {
+          'tactical-glow': '0 0 12px rgba(255, 85, 0, 0.5)',
+        },
+        borderRadius: {
+          "DEFAULT": "0px", 
+          "sm": "2px",
+          "lg": "2px", 
+          "xl": "2px", 
+          "full": "0px"
+        },
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: theme('colors.tactical-bg');
+    color: theme('colors.tactical-text');
+    font-family: theme('fontFamily.body');
+  }
+  h1, h2, h3, .heading-font {
+    font-family: theme('fontFamily.display');
+    text-transform: uppercase;
+  }
+  
+  /* Details/Summary marker removal */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+</head>
+<body class="bg-tactical-bg text-tactical-text min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-[240px] flex-shrink-0 bg-tactical-surface border-r border-tactical-border h-screen flex flex-col">
+<div class="h-16 flex items-center px-6 border-b border-tactical-border">
+<div class="w-8 h-8 flex items-center justify-center text-tactical-primary mr-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
+          token
+        </span>
+</div>
+<h1 class="text-xl font-bold tracking-widest text-tactical-text">TACTICAL</h1>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<!-- CUSTOMIZATION Group -->
+<div class="mb-6">
+<p class="px-6 text-xs text-tactical-muted uppercase tracking-wider mb-2">Customization</p>
+<a class="flex items-center px-6 h-10 text-sm text-tactical-muted hover:text-tactical-text hover:bg-tactical-surface-hover transition-colors" href="#">
+          Display Modes
+        </a>
+<!-- Active Nav Item: Crosshairs -->
+<a class="flex items-center px-6 h-10 text-sm font-bold text-white bg-tactical-primary shadow-tactical-glow transition-colors relative" href="#">
+          Crosshairs
+</a>
+<a class="flex items-center px-6 h-10 text-sm text-tactical-muted hover:text-tactical-text hover:bg-tactical-surface-hover transition-colors" href="#">
+          Position &amp; Size
+        </a>
+</div>
+<!-- ESSENTIALS Group -->
+<div class="mb-6">
+<p class="px-6 text-xs text-tactical-muted uppercase tracking-wider mb-2">Essentials</p>
+<a class="flex items-center px-6 h-10 text-sm text-tactical-muted hover:text-tactical-text hover:bg-tactical-surface-hover transition-colors" href="#">
+          Options
+        </a>
+<a class="flex items-center px-6 h-10 text-sm text-tactical-muted hover:text-tactical-text hover:bg-tactical-surface-hover transition-colors" href="#">
+          Help
+        </a>
+</div>
+</nav>
+<div class="p-4 border-t border-tactical-border flex justify-between items-center text-tactical-muted">
+<a class="hover:text-tactical-primary transition-colors" href="#"><span class="material-symbols-outlined">forum</span></a>
+<a class="hover:text-tactical-primary transition-colors" href="#"><span class="material-symbols-outlined">play_circle</span></a>
+<a class="hover:text-tactical-primary transition-colors" href="#"><span class="material-symbols-outlined">movie</span></a>
+<a class="hover:text-tactical-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex-shrink-0 border-b border-tactical-border bg-tactical-bg flex items-center justify-between px-8">
+<h2 class="text-2xl font-bold tracking-wider text-tactical-text heading-font">HELP &amp; DOCUMENTATION</h2>
+<div class="flex items-center gap-4">
+<span class="text-sm text-tactical-muted">HIDDEN</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-10 h-5 bg-tactical-surface peer-focus:outline-none rounded-sm border border-tactical-border peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-tactical-text after:border-gray-300 after:border after:rounded-sm after:h-4 after:w-4 after:transition-all peer-checked:bg-tactical-primary shadow-tactical-glow"></div>
+</label>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Warning Banner -->
+<div class="max-w-[800px] mx-auto mb-8 bg-tactical-surface border border-tactical-primary border-l-4 p-4 flex items-start justify-between">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tactical-primary mt-0.5">warning</span>
+<div>
+<h3 class="text-tactical-primary font-bold heading-font text-lg leading-tight">SYSTEM OVERLAY PERMISSION REQUIRED</h3>
+<p class="text-sm text-tactical-text mt-1">Please enable overlay permissions in your system settings to ensure crosshairs render correctly in fullscreen applications.</p>
+</div>
+</div>
+<button class="text-tactical-muted hover:text-tactical-text transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Help Content Center Column -->
+<div class="max-w-[800px] mx-auto w-full flex flex-col gap-8 pb-12">
+<!-- Search Bar -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-tactical-muted">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-tactical-surface border border-tactical-border text-tactical-text text-sm rounded-sm focus:outline-none focus:border-tactical-primary focus:ring-1 focus:ring-tactical-primary transition-colors placeholder:text-tactical-muted" placeholder="SEARCH DOCUMENTATION..." type="text"/>
+</div>
+<!-- FAQ Accordions -->
+<div class="flex flex-col gap-2">
+<h3 class="heading-font text-xl text-tactical-muted mb-2 border-b border-tactical-border pb-2">FREQUENTLY ASKED QUESTIONS</h3>
+<details class="group bg-tactical-surface border border-tactical-border rounded-sm">
+<summary class="flex items-center justify-between h-14 px-4 cursor-pointer hover:bg-tactical-surface-hover transition-colors">
+<span class="font-medium text-tactical-text">How do I change my crosshair?</span>
+<span class="material-symbols-outlined text-tactical-muted group-open:rotate-45 transition-transform duration-200">add</span>
+</summary>
+<div class="px-4 pb-4 pt-2 text-sm text-tactical-muted border-t border-tactical-border/50">
+              Navigate to the "Crosshairs" section in the Essentials menu. You can browse the gallery and click any card to instantly apply it. To upload a custom SVG, click the card with the "+" icon at the end of the gallery.
+            </div>
+</details>
+<details class="group bg-tactical-surface border border-tactical-border rounded-sm">
+<summary class="flex items-center justify-between h-14 px-4 cursor-pointer hover:bg-tactical-surface-hover transition-colors">
+<span class="font-medium text-tactical-text">Why isn't my display mode applying?</span>
+<span class="material-symbols-outlined text-tactical-muted group-open:rotate-45 transition-transform duration-200">add</span>
+</summary>
+<div class="px-4 pb-4 pt-2 text-sm text-tactical-muted border-t border-tactical-border/50">
+              Ensure you have clicked the "APPLY" button in the bottom right corner of the Display Modes screen. Some fullscreen exclusive games may require you to run Tactical in "Overlay" mode instead of "Windowed".
+            </div>
+</details>
+<details class="group bg-tactical-surface border border-tactical-border rounded-sm">
+<summary class="flex items-center justify-between h-14 px-4 cursor-pointer hover:bg-tactical-surface-hover transition-colors">
+<span class="font-medium text-tactical-text">How to reset all settings?</span>
+<span class="material-symbols-outlined text-tactical-muted group-open:rotate-45 transition-transform duration-200">add</span>
+</summary>
+<div class="px-4 pb-4 pt-2 text-sm text-tactical-muted border-t border-tactical-border/50">
+              Go to Customization &gt; Options. Scroll to the bottom of the page and click the red "RESET ALL SETTINGS" button. Warning: This action cannot be undone.
+            </div>
+</details>
+<details class="group bg-tactical-surface border border-tactical-border rounded-sm">
+<summary class="flex items-center justify-between h-14 px-4 cursor-pointer hover:bg-tactical-surface-hover transition-colors">
+<span class="font-medium text-tactical-text">Is this app safe to use?</span>
+<span class="material-symbols-outlined text-tactical-muted group-open:rotate-45 transition-transform duration-200">add</span>
+</summary>
+<div class="px-4 pb-4 pt-2 text-sm text-tactical-muted border-t border-tactical-border/50">
+              Tactical operates entirely as a visual overlay and does not hook into game memory or modify game files. It is compliant with standard anti-cheat systems. However, always review the terms of service for specific competitive titles.
+            </div>
+</details>
+</div>
+<!-- Support CTA -->
+<div class="mt-8 bg-tactical-surface border border-tactical-border p-8 flex flex-col items-center justify-center text-center rounded-sm">
+<div class="w-16 h-16 bg-[#5865F2]/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[#5865F2] text-3xl">support_agent</span>
+</div>
+<h3 class="heading-font text-2xl text-tactical-text mb-2">STILL NEED HELP?</h3>
+<p class="text-tactical-muted text-sm mb-6 max-w-md">Join our community server to speak with support staff or get configuration tips from other players.</p>
+<button class="bg-[#5865F2] hover:bg-[#4752C4] text-white heading-font text-lg px-8 py-3 rounded-sm transition-colors flex items-center gap-2">
+            JOIN DISCORD SERVER
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,7 @@
+12:21 - 28/4/2026
+- đã thử dùng hình ảnh bỏ vào antigravity => tạo ra prompt thiết kế theo giao diện mà nó không hiệu quả
+- tôi chụp ảnh một cái app và bảo gemini 3.1 pro tạo promt thiết kế nhưng mà nó không tạo được có vẻ vấn đề năm ở chỗ prompt không thể thiết kế theo được giờ tôi đang tìm giải pháp khác
+
+02:45 - 28/4/2026
+- Tôi bắt đầu sử dụng stitch của google gen UI để thiết kế giao diện
+- kết quả khá ưng ý

@@ -13,7 +13,7 @@ int main() {
     #endif
     try {
         webview::webview main_window(false, nullptr);
-        main_window.set_title("Prompt Workbench");
+        main_window.set_title("CalcPro");
         main_window.set_size(1280, 720, WEBVIEW_HINT_NONE);
 
         main_window.bind("ping", [&](const std::string& args_str) -> std::string { 

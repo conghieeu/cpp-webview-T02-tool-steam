@@ -15,37 +15,27 @@ if (!fs.existsSync(inputPath)) {
   process.exit(1);
 }
 
-// Read HTML
 let html = fs.readFileSync(inputPath, "utf-8");
 
-// Remove whitespace
-html = html
-  .replace(/\s+/g, " ") // collapse consecutive whitespace
-  .replace(/>\s+</g, "><") // remove space between tags
-  .trim();
+// MSVC limits narrow string literals to ~16380 bytes.
+// Split into chunks and let the compiler concatenate adjacent literals.
+const delim = "INDEX_HTML";
+const maxChunk = 16000;
+const chunks = [];
+for (let i = 0; i < html.length; i += maxChunk) {
+  chunks.push(html.slice(i, i + maxChunk));
+}
 
-// Escape backslashes and double quotes
-html = html
-  .replace(/\\/g, "\\\\")
-  .replace(/"/g, '\\"')
-  .replace(/\n/g, '\\n"\n"');
+const rawStr = chunks
+  .map((c) => `R"${delim}(\n${c}\n)${delim}"`)
+  .join("\n");
 
-// Build header content
-let header = `#pragma once
+const header = `#pragma once
 // Auto-generated from ${path.basename(inputPath)}
 // Do not edit manually.
 
-constexpr const char INDEX_HTML[] =`;
-
-let htmlParts = [];
-for (let i = 0; i < html.length; i += 300) {
-  let part = `"${html.slice(i, i + 300)}"`;
-  htmlParts.push(part);
-}
-
-let quotedHtml = htmlParts.join("\n");
-
-header = header.concat(`${quotedHtml};`);
+constexpr const char INDEX_HTML[] = ${rawStr};
+`;
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, header);

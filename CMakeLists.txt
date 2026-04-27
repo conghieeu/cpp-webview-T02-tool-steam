@@ -25,6 +25,6 @@ FetchContent_MakeAvailable(json)
 
 add_executable(app WIN32)
 
-target_sources(app PRIVATE src/main.cpp ui/dist/index_html.h)
+target_sources(app PRIVATE src/main.cpp src/resources.rc ui/dist/index_html.h)
 target_include_directories(app PRIVATE ui/dist)
 target_link_libraries(app PRIVATE webview::core nlohmann_json::nlohmann_json)

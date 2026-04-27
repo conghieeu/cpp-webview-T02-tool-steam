@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Config Hub - Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Rajdhani:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f95706",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#0A0A0C",
+                        "surface": "#121216",
+                        "surface-hover": "#1A1A20",
+                        "border-color": "#2A2A35",
+                        "text-muted": "#8B8B99",
+                        "danger": "#FF3333"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "heading": ["Rajdhani", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "sm": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 10px rgba(249, 87, 6, 0.4)',
+                        'glow-active': '0 0 15px rgba(249, 87, 6, 0.6)'
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for tactical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A35; 
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f95706; 
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-[#EAEAEA] font-display min-h-screen overflow-x-hidden flex selection:bg-primary selection:text-white">
+<!-- Layout Shell -->
+<!-- Sidebar -->
+<div class="fixed top-0 left-0 h-full w-[240px] bg-surface border-r border-border-color flex flex-col z-20">
+<!-- Logo Area -->
+<div class="h-16 flex items-center px-6 border-b border-border-color">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#EAEAEA] font-heading text-lg font-bold uppercase tracking-wider leading-none">CONFIG HUB</h1>
+<span class="text-text-muted text-[10px] tracking-widest mt-1">V 1.0.4</span>
+</div>
+</div>
+</div>
+<!-- Nav Links -->
+<div class="flex-1 overflow-y-auto py-6 px-3 flex flex-col gap-6">
+<!-- Group: Essentials -->
+<div class="flex flex-col gap-1">
+<span class="text-text-muted text-[11px] font-heading uppercase tracking-[0.1em] px-3 mb-2">Essentials</span>
+<!-- ACTIVE NAV ITEM (Moved from System to Essentials as per request) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-primary bg-surface-hover relative border-l-2 border-primary shadow-[inset_2px_0_0_0_rgba(249,87,6,0.1)]" href="#">
+<div class="absolute left-[-2px] top-0 bottom-0 w-[2px] bg-primary shadow-glow"></div>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-sm font-medium">Options</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-text-muted hover:text-[#EAEAEA] hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm font-medium">Help</span>
+</a>
+</div>
+<!-- Group: System -->
+<div class="flex flex-col gap-1">
+<span class="text-text-muted text-[11px] font-heading uppercase tracking-[0.1em] px-3 mb-2">System</span>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-text-muted hover:text-[#EAEAEA] hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">monitor</span>
+<span class="text-sm font-medium">Display Modes</span>
+</a>
+</div>
+<!-- Group: Support -->
+<div class="flex flex-col gap-1">
+<span class="text-text-muted text-[11px] font-heading uppercase tracking-[0.1em] px-3 mb-2">Support</span>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-text-muted hover:text-[#EAEAEA] hover:bg-surface-hover transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">crossword</span>
+<span class="text-sm font-medium">Crosshairs</span>
+</a>
+</div>
+</div>
+<!-- Social Dock -->
+<div class="p-4 border-t border-border-color flex justify-between items-center bg-[#0A0A0C]">
+<a class="text-text-muted hover:text-primary transition-colors p-2" href="#" title="Discord">
+<svg fill="currentColor" height="20px" viewbox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M104,140a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm60-12a12,12,0,1,0,12,12A12,12,0,0,0,164,128Zm74.45,64.9-67,29.71a16.17,16.17,0,0,1-21.71-9.1l-8.11-22q-6.72.45-13.63.46t-13.63-.46l-8.11,22a16.18,16.18,0,0,1-21.71,9.1l-67-29.71a15.93,15.93,0,0,1-9.06-18.51L38,58A16.07,16.07,0,0,1,51,46.14l36.06-5.93a16.22,16.22,0,0,1,18.26,11.88l3.26,12.84Q118.11,64,128,64t19.4.93l3.26-12.84a16.21,16.21,0,0,1,18.26-11.88L205,46.14A16.07,16.07,0,0,1,218,58l29.53,116.38A15.93,15.93,0,0,1,238.45,192.9Z"></path></svg>
+</a>
+<a class="text-text-muted hover:text-primary transition-colors p-2" href="#" title="TikTok">
+<svg fill="currentColor" height="20px" viewbox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M224,72a48.05,48.05,0,0,1-48-48,8,8,0,0,0-8-8H128a8,8,0,0,0-8,8V156a20,20,0,1,1-28.57-18.08A8,8,0,0,0,96,130.69V88a8,8,0,0,0-9.4-7.88C50.91,86.48,24,119.1,24,156a76,76,0,0,0,152,0V116.29A103.25,103.25,0,0,0,224,128a8,8,0,0,0,8-8V80A8,8,0,0,0,224,72Zm-8,39.64a87.19,87.19,0,0,1-43.33-16.15A8,8,0,0,0,160,102v54a60,60,0,0,1-120,0c0-25.9,16.64-49.13,40-57.6v27.67A36,36,0,1,0,136,156V32h24.5A64.14,64.14,0,0,0,216,87.5Z"></path></svg>
+</a>
+<a class="text-text-muted hover:text-primary transition-colors p-2" href="#" title="YouTube">
+<svg fill="currentColor" height="20px" viewbox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"></path></svg>
+</a>
+<a class="text-text-muted hover:text-primary transition-colors p-2" href="#" title="Twitter">
+<svg fill="currentColor" height="20px" viewbox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="ml-[240px] flex-1 flex flex-col min-h-screen relative w-[calc(100vw-240px)]">
+<!-- Header -->
+<header class="h-16 border-b border-border-color bg-background-dark flex items-center justify-between px-8 z-10 sticky top-0">
+<h2 class="font-heading text-xl font-bold uppercase tracking-wide text-[#EAEAEA]">Options</h2>
+<div class="flex items-center gap-4">
+<span class="text-text-muted text-sm uppercase tracking-wider font-heading">Hidden</span>
+<!-- Custom Toggle Switch for 'Hidden' -->
+<button aria-checked="true" class="relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-primary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark shadow-glow" role="switch" type="button">
+<span class="translate-x-5 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0A0A0C] shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-8 overflow-y-auto">
+<!-- Settings Container -->
+<div class="max-w-5xl mx-auto">
+<!-- System Settings Section -->
+<div class="mb-10">
+<h3 class="text-text-muted font-heading uppercase tracking-[0.15em] text-sm mb-6 border-b border-border-color pb-2">System Behaviors</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Setting Card: Start with Windows -->
+<div class="bg-surface border border-border-color rounded-sm p-5 flex items-center justify-between hover:border-text-muted transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-[#EAEAEA] font-medium text-base mb-1">Start with Windows</span>
+<span class="text-text-muted text-sm">Automatically launch Config Hub when system boots.</span>
+</div>
+<!-- Toggle Active -->
+<button aria-checked="true" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-sm border border-primary bg-primary/20 transition-colors duration-200 ease-in-out focus:outline-none shadow-[inset_0_0_10px_rgba(249,87,6,0.2)] shadow-glow" role="switch" type="button">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-sm bg-primary shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Setting Card: Hardware Acceleration -->
+<div class="bg-surface border border-border-color rounded-sm p-5 flex items-center justify-between hover:border-text-muted transition-colors">
+<div class="flex flex-col pr-4">
+<span class="text-[#EAEAEA] font-medium text-base mb-1">Hardware Acceleration</span>
+<span class="text-text-muted text-sm">Use GPU to render interface. May improve performance.</span>
+</div>
+<!-- Toggle Inactive -->
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-sm border border-border-color bg-[#0A0A0C] transition-colors duration-200 ease-in-out focus:outline-none hover:border-text-muted" role="switch" type="button">
+<span class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-sm bg-text-muted shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Localization Section -->
+<div class="mb-10">
+<h3 class="text-text-muted font-heading uppercase tracking-[0.15em] text-sm mb-6 border-b border-border-color pb-2">Localization</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Setting Card: Language -->
+<div class="bg-surface border border-border-color rounded-sm p-5 flex flex-col justify-center hover:border-text-muted transition-colors">
+<label class="text-[#EAEAEA] font-medium text-base mb-3 block" for="language-select">Display Language</label>
+<div class="relative">
+<select class="block w-full appearance-none rounded-sm border border-border-color bg-[#0A0A0C] py-2.5 pl-3 pr-10 text-sm text-[#EAEAEA] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary shadow-sm transition-colors" id="language-select">
+<option selected="" value="en">English (US)</option>
+<option value="es">Español</option>
+<option value="fr">Français</option>
+<option value="de">Deutsch</option>
+<option value="ja">日本語</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-text-muted">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Danger Zone Section -->
+<div class="mb-10 mt-16">
+<h3 class="text-danger font-heading uppercase tracking-[0.15em] text-sm mb-6 border-b border-danger/30 pb-2">Danger Zone</h3>
+<div class="bg-surface border border-danger/30 rounded-sm p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex flex-col max-w-lg">
+<span class="text-[#EAEAEA] font-medium text-base mb-1">Reset All Settings</span>
+<span class="text-text-muted text-sm">Permanently reset all configurations, crosshairs, and display modes to factory defaults. This action cannot be undone.</span>
+</div>
+<button class="shrink-0 inline-flex items-center justify-center px-6 py-2.5 border border-danger text-danger font-heading uppercase tracking-widest text-base font-bold rounded-sm transition-all duration-200 hover:bg-danger hover:text-[#0A0A0C] hover:shadow-[0_0_15px_rgba(255,51,51,0.5)] focus:outline-none focus:ring-2 focus:ring-danger focus:ring-offset-2 focus:ring-offset-background-dark" type="button">
+                            Reset Defaults
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

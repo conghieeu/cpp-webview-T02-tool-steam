@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Tactical Dark Web App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FF5500",
+            "background-dark": "#0A0A0C",
+            surface: "#121216",
+            "surface-hover": "#1A1A20",
+            "text-main": "#EAEAEA",
+            muted: "#8B8B99",
+            "border-color": "#2A2A35",
+            danger: "#FF3333",
+          },
+          fontFamily: {
+            heading: ["Rajdhani", "sans-serif"],
+            body: ["Space Grotesk", "sans-serif"],
+          },
+          borderRadius: { none: "0px", sm: "2px", DEFAULT: "2px" },
+          boxShadow: { glow: "0 0 12px rgba(255, 85, 0, 0.5)" },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="bg-background-dark text-text-main font-body h-screen flex overflow-hidden">
+  <!-- Sidebar -->
+  <aside class="w-[240px] h-full bg-surface border-r border-border-color flex flex-col shrink-0 z-20">
+    <div class="h-16 flex items-center px-6 border-b border-border-color gap-3">
+      <div class="w-8 h-8 bg-primary flex items-center justify-center shadow-glow">
+        <span class="material-symbols-outlined text-background-dark text-xl" style="font-variation-settings:'FILL'1">token</span>
+      </div>
+      <h1 class="font-heading text-lg font-bold uppercase tracking-wider">Tactical HUD</h1>
+    </div>
+    <nav class="flex-1 overflow-y-auto py-6 flex flex-col gap-6" id="sidebarNav">
+      <div class="flex flex-col">
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Essentials</h3>
+        <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors" data-screen="display-modes" href="#display-modes">
+          <span class="material-symbols-outlined text-[20px]">monitor</span>
+          <span class="text-sm font-medium">Display Modes</span>
+        </a>
+        <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors" data-screen="crosshairs" href="#crosshairs">
+          <span class="material-symbols-outlined text-[20px]">my_location</span>
+          <span class="text-sm font-medium">Crosshairs</span>
+        </a>
+        <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors" data-screen="position-size" href="#position-size">
+          <span class="material-symbols-outlined text-[20px]">aspect_ratio</span>
+          <span class="text-sm font-medium">Position &amp; Size</span>
+        </a>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Customization</h3>
+        <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors" data-screen="options" href="#options">
+          <span class="material-symbols-outlined text-[20px]">settings</span>
+          <span class="text-sm font-medium">Options</span>
+        </a>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Support</h3>
+        <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors" data-screen="help" href="#help">
+          <span class="material-symbols-outlined text-[20px]">help</span>
+          <span class="text-sm font-medium">Help</span>
+        </a>
+      </div>
+    </nav>
+    <div class="h-16 border-t border-border-color flex items-center justify-center gap-4 px-6 text-muted">
+      <a class="hover:text-primary transition-colors" href="#" title="Discord"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.8 19.8 0 00-4.885-1.515.074.074 0 00-.079.037c-.211.375-.444.865-.608 1.25-1.845-.276-3.68-.276-5.487 0-.163-.394-.406-.875-.618-1.25a.077.077 0 00-.079-.037A19.74 19.74 0 003.76 4.37a.07.07 0 00-.032.028C.533 9.046-.319 13.58.1 18.057a.082.082 0 00.031.057c2.053 1.507 4.041 2.422 5.993 3.029a.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 12.3 12.3 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.099.246.198.373.292a.077.077 0 01-.007.127 12.3 12.3 0 01-1.873.891.077.077 0 00-.041.107c.36.699.772 1.363 1.225 1.993a.076.076 0 00.084.029c1.961-.607 3.95-1.522 6.002-3.03a.077.077 0 00.032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.029zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.211 0 2.176 1.095 2.157 2.419 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.211 0 2.176 1.095 2.157 2.419 0 1.333-.946 2.419-2.157 2.419z"/></svg></a>
+      <a class="hover:text-primary transition-colors" href="#" title="TikTok"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+      <a class="hover:text-primary transition-colors" href="#" title="YouTube"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a class="hover:text-primary transition-colors" href="#" title="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <!-- Header -->
+    <header class="h-16 border-b border-border-color bg-background-dark flex items-center justify-between px-8 shrink-0">
+      <h2 class="font-heading text-xl font-bold uppercase tracking-wide" id="pageTitle">Display Modes</h2>
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-muted uppercase">Hidden</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" class="sr-only peer" id="hiddenToggle" />
+          <div class="w-10 h-5 bg-border-color peer-checked:bg-primary rounded-sm border border-border-color peer-checked:shadow-glow transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-main after:rounded-sm after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white"></div>
+        </label>
+      </div>
+    </header>
+
+    <!-- Scrollable Content Area -->
+    <div class="flex-1 overflow-y-auto relative" id="contentArea">
+      <!-- Warning Banner -->
+      <div id="warningBanner" class="bg-surface border border-primary border-l-4 mx-6 mt-4 p-3 flex items-start justify-between transition-all duration-300">
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL'1">warning</span>
+          <div>
+            <h4 class="text-primary font-heading font-bold uppercase text-sm">System Override Active</h4>
+            <p class="text-muted text-xs mt-1">Hardware acceleration conflicts detected. Performance may be degraded until resolved in Options.</p>
+          </div>
+        </div>
+        <button class="text-muted hover:text-text-main transition-colors" id="dismissWarning">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Screen Content -->
+      <div class="p-6" id="screenContent"></div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/api.js"></script>
+  <script type="module" src="/js/screens/display-modes.js"></script>
+  <script type="module" src="/js/screens/crosshairs.js"></script>
+  <script type="module" src="/js/screens/help.js"></script>
+  <script type="module" src="/js/screens/options.js"></script>
+  <script type="module" src="/js/screens/position-size.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

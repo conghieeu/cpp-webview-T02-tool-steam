@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /d/cpp-webview/cpp-webview-T02/ui/public)",
+      "Bash(cp /d/cpp-webview/cpp-webview-T02/ui/assets/logo.ico /d/cpp-webview/cpp-webview-T02/ui/public/)",
+      "Bash(npm run *)",
+      "Bash(cmake --build build --config Release)",
+      "Bash(taskkill /f /im app.exe)",
+      "Bash(tasklist)",
+      "Bash(taskkill /f /pid 9692)",
+      "PowerShell(Stop-Process *)",
+      "Bash(findstr /i \"app\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(cmake --build . --config Release)",
+      "Bash(python *)",
+      "Bash(node *)",
+      "Bash(npx vite *)",
+      "Bash(npm install *)",
+      "Bash(curl -s http://localhost:3000/api/display-modes)",
+      "Bash(curl -s http://localhost:3000/api/settings)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/api/crosshairs)",
+      "Bash(kill %1)"
+    ]
+  }
+}

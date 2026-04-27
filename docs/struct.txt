@@ -1,0 +1,9 @@
+ui/
+├── public/                # Các file tĩnh không cần Vite xử lý (favicon, v.v.)
+└── src/
+    ├── assets/            # Nơi chứa tài nguyên được Vite tối ưu hóa
+    │   ├── images/        # Ảnh minh họa, background (JPG, PNG, WebP)
+    │   └── icons/         # Các file icon (thường là SVG)
+    │       ├── social/    # Icon mạng xã hội
+    │       ├── ui/        # Icon giao diện (close, menu, arrow)
+    │       └── buttons/   # Icon dùng riêng cho các nút bấm
