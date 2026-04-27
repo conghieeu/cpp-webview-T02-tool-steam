@@ -1,0 +1,18 @@
+xây dựng lại UI
+cd ui
+npm run build
+cd ..
+
+xây dựng lại C++
+cd build
+cmake --build .
+cd ..
+
+chạy lại app
+.\build\bin\Debug\app.exe
+
+chạy tắt để view luôn
+.\dev.ps1
+
+build Release (build nhanh hơn)
+cmake --build build --config Release

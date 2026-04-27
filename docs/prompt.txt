@@ -1,0 +1,11 @@
+cách lênh kế hoạch dự án 
+tôi đang tính làm một cái app caculator viết kế hoạch chi tiết , 
+thiết kế chuẩn chuyên nghiệp viết planing bằng các file .md chi tiết trong thư mục Planning
+
+về git
+xóa .git đi tôi cần tạo .git mới và 1 git duy nhất
+
+
+đây là các lỗi tôi cần fix hãy lập một kế hoạch fix
+
+code của bạn sẽ bị chatGPT 5.4 kiểm tra
