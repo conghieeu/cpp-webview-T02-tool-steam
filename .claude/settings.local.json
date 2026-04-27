@@ -22,7 +22,11 @@
       "Bash(curl -s http://localhost:3000/)",
       "Bash(curl -s http://localhost:3000/api/crosshairs)",
       "Bash(kill %1)",
-      "PowerShell(taskkill *)"
+      "PowerShell(taskkill *)",
+      "Bash(curl -s http://localhost:5173/src/main.js)",
+      "Bash(xxd ui/src/main.js)",
+      "Bash(cmake --build build)",
+      "Bash(curl -s http://localhost:4173/)"
     ]
   }
 }

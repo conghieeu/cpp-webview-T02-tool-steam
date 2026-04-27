@@ -32,7 +32,7 @@ while (i < html.length) {
 }
 
 const rawStr = chunks
-  .map((c) => `R"${delim}(\n${c}\n)${delim}"`)
+  .map((c) => `R"${delim}(${c})${delim}"`)
   .join("\n");
 
 const header = `#pragma once
