@@ -18,12 +18,17 @@ if (!fs.existsSync(inputPath)) {
 let html = fs.readFileSync(inputPath, "utf-8");
 
 // MSVC limits narrow string literals to ~16380 bytes.
-// Split into chunks and let the compiler concatenate adjacent literals.
+// Split into chunks by UTF-8 byte count and let the compiler concatenate.
 const delim = "INDEX_HTML";
-const maxChunk = 16000;
+const maxBytes = 15500;
+const encoder = new TextEncoder();
 const chunks = [];
-for (let i = 0; i < html.length; i += maxChunk) {
-  chunks.push(html.slice(i, i + maxChunk));
+let i = 0;
+while (i < html.length) {
+  let j = Math.min(i + maxBytes, html.length);
+  while (j > i && encoder.encode(html.slice(i, j)).length > maxBytes) j--;
+  chunks.push(html.slice(i, j));
+  i = j;
 }
 
 const rawStr = chunks

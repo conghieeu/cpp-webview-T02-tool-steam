@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tactical HUD</title>
+  <title data-i18n="Tactical HUD">Tactical HUD</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script>
@@ -25,36 +25,36 @@
       <div class="w-8 h-8 bg-primary flex items-center justify-center shadow-glow">
         <span class="material-symbols-outlined text-background-dark text-xl" style="font-variation-settings:'FILL'1">token</span>
       </div>
-      <h1 class="font-heading text-lg font-bold uppercase tracking-wider">Tactical HUD</h1>
+      <h1 class="font-heading text-lg font-bold uppercase tracking-wider" data-i18n="Tactical HUD">Tactical HUD</h1>
     </div>
     <nav class="flex-1 overflow-y-auto py-6 flex flex-col gap-6" id="sidebarNav">
       <div class="flex flex-col">
-        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Essentials</h3>
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2" data-i18n="Essentials">Essentials</h3>
         <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors cursor-pointer" data-screen="display-modes">
           <span class="material-symbols-outlined text-[20px]">monitor</span>
-          <span class="text-sm font-medium">Display Modes</span>
+          <span class="text-sm font-medium" data-i18n="Display Modes">Display Modes</span>
         </a>
         <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors cursor-pointer" data-screen="crosshairs">
           <span class="material-symbols-outlined text-[20px]">my_location</span>
-          <span class="text-sm font-medium">Crosshairs</span>
+          <span class="text-sm font-medium" data-i18n="Crosshairs">Crosshairs</span>
         </a>
         <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors cursor-pointer" data-screen="position-size">
           <span class="material-symbols-outlined text-[20px]">aspect_ratio</span>
-          <span class="text-sm font-medium">Position &amp; Size</span>
+          <span class="text-sm font-medium" data-i18n="Position &amp; Size">Position &amp; Size</span>
         </a>
       </div>
       <div class="flex flex-col">
-        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Customization</h3>
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2" data-i18n="Customization">Customization</h3>
         <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors cursor-pointer" data-screen="options">
           <span class="material-symbols-outlined text-[20px]">settings</span>
-          <span class="text-sm font-medium">Options</span>
+          <span class="text-sm font-medium" data-i18n="Options">Options</span>
         </a>
       </div>
       <div class="flex flex-col">
-        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2">Support</h3>
+        <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2" data-i18n="Support">Support</h3>
         <a class="nav-link flex items-center h-10 px-6 gap-3 text-muted hover:text-text-main hover:bg-surface-hover transition-colors cursor-pointer" data-screen="help">
           <span class="material-symbols-outlined text-[20px]">help</span>
-          <span class="text-sm font-medium">Help</span>
+          <span class="text-sm font-medium" data-i18n="Help">Help</span>
         </a>
       </div>
     </nav>
@@ -71,7 +71,7 @@
     <header class="h-16 border-b border-border-color bg-background-dark flex items-center justify-between px-8 shrink-0">
       <h2 class="font-heading text-xl font-bold uppercase tracking-wide" id="pageTitle">Display Modes</h2>
       <div class="flex items-center gap-4">
-        <span class="text-sm text-muted uppercase">Hidden</span>
+        <span class="text-sm text-muted uppercase" data-i18n="Hidden">Hidden</span>
         <label class="relative inline-flex items-center cursor-pointer">
           <input type="checkbox" class="sr-only peer" id="hiddenToggle" />
           <div class="w-10 h-5 bg-border-color peer-checked:bg-primary rounded-sm border border-border-color peer-checked:shadow-glow transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-main after:rounded-sm after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white"></div>
@@ -83,8 +83,8 @@
         <div class="flex items-start gap-3">
           <span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL'1">warning</span>
           <div>
-            <h4 class="text-primary font-heading font-bold uppercase text-sm">System Override Active</h4>
-            <p class="text-muted text-xs mt-1">Hardware acceleration conflicts detected. Performance may be degraded until resolved in Options.</p>
+            <h4 class="text-primary font-heading font-bold uppercase text-sm" data-i18n="System Override Active">System Override Active</h4>
+            <p class="text-muted text-xs mt-1" data-i18n="Hardware acceleration conflicts detected. Performance may be degraded until resolved in Options.">Hardware acceleration conflicts detected. Performance may be degraded until resolved in Options.</p>
           </div>
         </div>
         <button class="text-muted hover:text-text-main transition-colors" id="dismissWarning">

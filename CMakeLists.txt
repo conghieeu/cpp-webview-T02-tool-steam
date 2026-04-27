@@ -5,7 +5,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(WEBVIEW_WEBKITGTK_API 6.0)	
+set(WEBVIEW_WEBKITGTK_API 6.0)
 
 include(FetchContent)
 
@@ -18,13 +18,23 @@ FetchContent_MakeAvailable(webview)
 
 FetchContent_Declare(
   json
-  GIT_REPOSITORY https://github.com/nlohmann/json 
+  GIT_REPOSITORY https://github.com/nlohmann/json
   GIT_TAG v3.12.0
 )
 FetchContent_MakeAvailable(json)
 
 add_executable(app WIN32)
 
-target_sources(app PRIVATE src/main.cpp src/resources.rc ui/dist/index_html.h)
-target_include_directories(app PRIVATE ui/dist)
+target_compile_definitions(app PRIVATE NOMINMAX)
+
+target_sources(app PRIVATE
+    src/main.cpp
+    src/config_manager.cpp
+    src/validation.cpp
+    src/bindings.cpp
+    src/resources.rc
+    ui/dist/index_html.h
+)
+target_include_directories(app PRIVATE ui/dist src)
 target_link_libraries(app PRIVATE webview::core nlohmann_json::nlohmann_json)
+target_link_libraries(app PRIVATE Shell32.lib)
