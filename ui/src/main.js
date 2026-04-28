@@ -100,6 +100,13 @@ const Native = {
     }
     return result;
   },
+
+  // Window controls
+  minimizeWindow() { return this.call("minimizeWindow"); },
+  maximizeWindow() { return this.call("maximizeWindow"); },
+  closeWindow() { return this.call("closeWindow"); },
+  isMaximized() { return this.call("isMaximized"); },
+  moveWindowBy(dx, dy) { return this.call("moveWindowBy", dx, dy); },
 };
 
 // ─── Default Config & LocalStorage Persistence ───
@@ -950,6 +957,73 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".nav-link").forEach((a) => {
     a.addEventListener("click", () => navigate(a.dataset.screen));
   });
+
+  // ─── Custom Title Bar Controls ───
+
+  async function updateMaxBtn() {
+    const isMax = await Native.isMaximized();
+    document.getElementById("maximize-icon").textContent = isMax ? "filter_none" : "check_box_outline_blank";
+  }
+
+  document.getElementById("btn-minimize").addEventListener("click", () => {
+    Native.minimizeWindow();
+  });
+  document.getElementById("btn-maximize").addEventListener("click", async () => {
+    await Native.maximizeWindow();
+    updateMaxBtn();
+  });
+  document.getElementById("btn-close").addEventListener("click", () => {
+    Native.closeWindow();
+  });
+
+  // Drag window by tracking mouse movement in JS (reliable with WebView2)
+  let isDragging = false;
+  let lastScreenX = 0, lastScreenY = 0;
+  const titlebar = document.getElementById("titlebar");
+
+  titlebar.addEventListener("mousedown", (e) => {
+    if (e.target.closest("#window-controls")) return;
+    isDragging = true;
+    lastScreenX = e.screenX;
+    lastScreenY = e.screenY;
+    e.preventDefault();
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    const dx = e.screenX - lastScreenX;
+    const dy = e.screenY - lastScreenY;
+    if (dx !== 0 || dy !== 0) {
+      Native.moveWindowBy(dx, dy);
+      lastScreenX = e.screenX;
+      lastScreenY = e.screenY;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  // Double-click title bar to maximize/restore
+  titlebar.addEventListener("dblclick", (e) => {
+    if (e.target.closest("#window-controls")) return;
+    Native.maximizeWindow().then(() => updateMaxBtn());
+  });
+
+  // Update maximize icon when window resizes (e.g. Win+Up keyboard shortcut)
+  let resizePending = false;
+  window.addEventListener("resize", () => {
+    if (resizePending) return;
+    resizePending = true;
+    requestAnimationFrame(async () => {
+      resizePending = false;
+      const isMax = await Native.isMaximized();
+      document.getElementById("maximize-icon").textContent = isMax ? "filter_none" : "check_box_outline_blank";
+    });
+  });
+
+  // Initial maximize icon state
+  updateMaxBtn();
 
   // Global function for inline onchange
   window.onLangChange = async (select) => {

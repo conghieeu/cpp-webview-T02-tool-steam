@@ -18,15 +18,33 @@
   </script>
   <link rel="stylesheet" href="/src/style.css" />
 </head>
-<body class="bg-background-dark text-text-main font-body h-screen flex overflow-hidden">
+<body class="bg-background-dark text-text-main font-body h-screen flex flex-col overflow-hidden select-none">
+  <!-- Custom Title Bar (Discord-style) -->
+  <div id="titlebar" class="h-8 bg-surface flex items-center shrink-0 z-30">
+    <div class="flex items-center gap-2 px-3">
+      <div class="w-5 h-5 bg-primary flex items-center justify-center shadow-glow">
+        <span class="material-symbols-outlined text-background-dark text-xs" style="font-variation-settings:'FILL'1">token</span>
+      </div>
+      <span class="font-heading text-xs font-bold uppercase tracking-wider" data-i18n="Tactical HUD">Tactical HUD</span>
+    </div>
+    <div class="flex-1 h-full" id="drag-region"></div>
+    <div class="flex h-full" id="window-controls">
+      <button class="window-btn w-[46px] h-full flex items-center justify-center text-muted hover:bg-surface-hover transition-colors" id="btn-minimize">
+        <span class="material-symbols-outlined text-lg leading-none" style="font-variation-settings:'FILL'0">remove</span>
+      </button>
+      <button class="window-btn w-[46px] h-full flex items-center justify-center text-muted hover:bg-surface-hover transition-colors" id="btn-maximize">
+        <span class="material-symbols-outlined text-lg leading-none" id="maximize-icon" style="font-variation-settings:'FILL'0">check_box_outline_blank</span>
+      </button>
+      <button class="window-btn w-[46px] h-full flex items-center justify-center text-muted hover:bg-danger hover:text-white transition-colors" id="btn-close">
+        <span class="material-symbols-outlined text-lg leading-none" style="font-variation-settings:'FILL'0">close</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- App Body (sidebar + main) -->
+  <div class="flex flex-1 overflow-hidden">
   <!-- Sidebar -->
   <aside class="w-[240px] h-full bg-surface border-r border-border-color flex flex-col shrink-0 z-20">
-    <div class="h-16 flex items-center px-6 border-b border-border-color gap-3">
-      <div class="w-8 h-8 bg-primary flex items-center justify-center shadow-glow">
-        <span class="material-symbols-outlined text-background-dark text-xl" style="font-variation-settings:'FILL'1">token</span>
-      </div>
-      <h1 class="font-heading text-lg font-bold uppercase tracking-wider" data-i18n="Tactical HUD">Tactical HUD</h1>
-    </div>
     <nav class="flex-1 overflow-y-auto py-6 flex flex-col gap-6" id="sidebarNav">
       <div class="flex flex-col">
         <h3 class="px-6 text-xs text-muted uppercase font-semibold tracking-widest mb-2" data-i18n="Essentials">Essentials</h3>
@@ -94,6 +112,7 @@
       <div class="p-6" id="screenContent"></div>
     </div>
   </main>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>
