@@ -1,4 +1,7 @@
 # Automation script for building and running CalcPro
+Write-Host "--- Installing Python Dependencies ---" -ForegroundColor Cyan
+pip install -q -r src\overlay\requirements.txt
+
 Write-Host "--- Building UI ---" -ForegroundColor Cyan
 Set-Location ui
 npm run build

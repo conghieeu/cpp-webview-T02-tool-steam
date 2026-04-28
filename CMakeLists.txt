@@ -32,6 +32,7 @@ target_sources(app PRIVATE
     src/config_manager.cpp
     src/validation.cpp
     src/bindings.cpp
+    src/overlay_manager.cpp
     src/resources.rc
     ui/dist/index_html.h
 )

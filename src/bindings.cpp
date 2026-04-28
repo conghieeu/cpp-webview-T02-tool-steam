@@ -3,7 +3,25 @@
 #include "validation.h"
 #include <iostream>
 
-void registerBindings(webview::webview& w, ConfigManager& config) {
+void registerBindings(webview::webview& w, ConfigManager& config, OverlayManager& overlay) {
+    auto syncOverlay = [&config, &overlay]() {
+        json state;
+        auto configData = config.getConfig();
+        state["mode"] = configData["display_mode"]["mode"];
+        state["position"] = configData["position"];
+        state["hidden"] = configData["settings"]["hidden"];
+        
+        std::string activeSvg = "";
+        for (auto& c : configData["crosshairs"]) {
+            if (c["is_active"] == 1) {
+                activeSvg = c["svg_d"].get<std::string>();
+                break;
+            }
+        }
+        state["crosshair"] = activeSvg;
+        overlay.sendUpdate(state);
+    };
+
     w.bind("getData", [&config](const std::string&) -> std::string {
         try {
             // Include supported_languages so frontend knows what's available
@@ -17,7 +35,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
         }
     });
 
-    w.bind("saveSetting", [&config](const std::string& args_str) -> std::string {
+    w.bind("saveSetting", [&config, syncOverlay](const std::string& args_str) -> std::string {
         try {
             auto args = json::parse(args_str);
             if (!args.is_array() || args.size() < 2 || !args[0].is_string()) {
@@ -42,6 +60,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
                 if (!config.save()) {
                     return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
                 }
+                syncOverlay();
                 return makeSuccess();
             }
 
@@ -67,6 +86,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
             if (!config.save()) {
                 return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
             }
+            syncOverlay();
             return makeSuccess();
         } catch (const json::parse_error& e) {
             return makeError("INVALID_ARGUMENT", std::string("JSON parse error: ") + e.what());
@@ -77,7 +97,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
         }
     });
 
-    w.bind("saveDisplayMode", [&config](const std::string& args_str) -> std::string {
+    w.bind("saveDisplayMode", [&config, syncOverlay](const std::string& args_str) -> std::string {
         try {
             auto args = json::parse(args_str);
             if (!args.is_array() || args.size() < 1 || !args[0].is_string()) {
@@ -95,6 +115,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
             if (!config.save()) {
                 return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
             }
+            syncOverlay();
             return makeSuccess();
         } catch (const json::parse_error& e) {
             return makeError("INVALID_ARGUMENT", std::string("JSON parse error: ") + e.what());
@@ -115,7 +136,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
         }
     });
 
-    w.bind("activateCrosshair", [&config](const std::string& args_str) -> std::string {
+    w.bind("activateCrosshair", [&config, syncOverlay](const std::string& args_str) -> std::string {
         try {
             auto args = json::parse(args_str);
             if (!args.is_array() || args.size() < 1 || !args[0].is_number_integer()) {
@@ -133,6 +154,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
             if (!config.save()) {
                 return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
             }
+            syncOverlay();
             return makeSuccess();
         } catch (const json::parse_error& e) {
             return makeError("INVALID_ARGUMENT", std::string("JSON parse error: ") + e.what());
@@ -204,7 +226,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
         }
     });
 
-    w.bind("savePosition", [&config](const std::string& args_str) -> std::string {
+    w.bind("savePosition", [&config, syncOverlay](const std::string& args_str) -> std::string {
         try {
             auto args = json::parse(args_str);
             if (!args.is_array() || args.size() < 1 || !args[0].is_string()) {
@@ -222,6 +244,7 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
             if (!config.save()) {
                 return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
             }
+            syncOverlay();
             return makeSuccess();
         } catch (const json::parse_error& e) {
             return makeError("INVALID_ARGUMENT", std::string("JSON parse error: ") + e.what());
@@ -232,13 +255,14 @@ void registerBindings(webview::webview& w, ConfigManager& config) {
         }
     });
 
-    w.bind("resetPosition", [&config](const std::string&) -> std::string {
+    w.bind("resetPosition", [&config, syncOverlay](const std::string&) -> std::string {
         try {
             json pos = {{"x_offset", 0}, {"y_offset", 0}, {"scale", 1.0}};
             config.setPosition(pos);
             if (!config.save()) {
                 return makeError("CONFIG_SAVE_ERROR", "Failed to write config file");
             }
+            syncOverlay();
             return pos.dump();
         } catch (const std::exception& e) {
             return makeError("INTERNAL_ERROR", std::string("resetPosition failed: ") + e.what());

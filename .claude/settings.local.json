@@ -27,7 +27,10 @@
       "Bash(xxd ui/src/main.js)",
       "Bash(cmake --build build)",
       "Bash(curl -s http://localhost:4173/)",
-      "Bash(xargs wc *)"
+      "Bash(xargs wc *)",
+      "PowerShell(Get-Process app -ErrorAction SilentlyContinue)",
+      "Bash(pip show *)",
+      "Bash(pythonw --version)"
     ]
   }
 }
