@@ -7,6 +7,24 @@
 const std::vector<int> ConfigManager::s_presetIds = {1, 2, 3, 4, 5, 6};
 const std::vector<std::string> ConfigManager::s_supportedLangs = {"en", "vi", "es", "fr", "de", "ja"};
 
+static void updateWindowsStartup(bool enable) {
+    HKEY hKey;
+    const char* runKeyPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+    const char* appName = "TacticalHUD";
+
+    if (RegOpenKeyExA(HKEY_CURRENT_USER, runKeyPath, 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
+        if (enable) {
+            char exePath[MAX_PATH];
+            GetModuleFileNameA(NULL, exePath, MAX_PATH);
+            std::string quotedPath = std::string("\"") + exePath + "\"";
+            RegSetValueExA(hKey, appName, 0, REG_SZ, (const BYTE*)quotedPath.c_str(), quotedPath.length() + 1);
+        } else {
+            RegDeleteValueA(hKey, appName);
+        }
+        RegCloseKey(hKey);
+    }
+}
+
 ConfigManager::ConfigManager() {
     m_config = defaultConfig();
 }
@@ -127,10 +145,14 @@ bool ConfigManager::save() {
 
 void ConfigManager::resetToDefaults() {
     m_config = defaultConfig();
+    updateWindowsStartup(false);
 }
 
 void ConfigManager::setSetting(const std::string& key, const json& value) {
     m_config["settings"][key] = value;
+    if (key == "start_with_windows" && value.is_boolean()) {
+        updateWindowsStartup(value.get<bool>());
+    }
 }
 
 void ConfigManager::setDisplayMode(const json& dm) {

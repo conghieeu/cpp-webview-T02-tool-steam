@@ -4,3 +4,4 @@ product required document = PRD.md
 
 backend-architecture-redesign
 
+sửa ở bản web trước thì bản app cũng tự động được sửa

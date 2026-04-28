@@ -4,27 +4,136 @@ const Native = {
   async call(method, ...args) {
     try {
       const raw = await window[method](...args);
-      const result = JSON.parse(raw);
+      let result = raw;
+      if (typeof raw === 'string') {
+        try { result = JSON.parse(raw); } catch (e) {}
+      }
       if (result && result.ok === false) {
         console.error(`[Native] ${method} failed:`, result.error?.code, result.error?.message);
         return null;
       }
       return result;
-    } catch {
-      console.error(`[Native] ${method} error`);
+    } catch (err) {
+      console.error(`[Native] ${method} error:`, err);
       return null;
     }
   },
-  getData() { return this.call("getData"); },
-  saveSetting(key, value) { return this.call("saveSetting", key, value); },
-  saveDisplayMode(obj) { return this.call("saveDisplayMode", JSON.stringify(obj)); },
-  getCrosshairs() { return this.call("getCrosshairs"); },
-  activateCrosshair(id) { return this.call("activateCrosshair", id); },
-  addCrosshair(name, svgD) { return this.call("addCrosshair", name, svgD); },
+  async getData() {
+    const data = await this.call("getData");
+    if (data) {
+      storeSave(data);
+      return data;
+    }
+    return storeLoad();
+  },
+  async saveSetting(key, value) {
+    const result = await this.call("saveSetting", key, value);
+    if (appData && key !== "reset") {
+      let storeVal = value;
+      if (typeof storeVal === "string") {
+        if (storeVal === "true") storeVal = true;
+        else if (storeVal === "false") storeVal = false;
+      }
+      if (!appData.settings) appData.settings = {};
+      appData.settings[key] = storeVal;
+      syncState();
+    }
+    return result;
+  },
+  async saveDisplayMode(obj) {
+    const result = await this.call("saveDisplayMode", JSON.stringify(obj));
+    if (appData) {
+      appData.display_mode = obj;
+      syncState();
+    }
+    return result;
+  },
+  async getCrosshairs() {
+    const data = await this.call("getCrosshairs");
+    if (data) {
+      if (appData) appData.crosshairs = data;
+      return data;
+    }
+    return appData?.crosshairs || null;
+  },
+  async activateCrosshair(id) {
+    const result = await this.call("activateCrosshair", id);
+    if (result && appData?.crosshairs) {
+      for (const c of appData.crosshairs) c.is_active = c.id === id ? 1 : 0;
+      syncState();
+    }
+    return result;
+  },
+  async addCrosshair(name, svgD) {
+    const result = await this.call("addCrosshair", name, svgD);
+    if (result) {
+      const items = await this.call("getCrosshairs");
+      if (items && appData) {
+        appData.crosshairs = items;
+        syncState();
+      }
+      return result;
+    }
+    if (appData?.crosshairs) {
+      const maxId = appData.crosshairs.reduce((m, c) => Math.max(m, c.id), 0);
+      const newCh = { id: maxId + 1, name, type: "custom", svg_d: svgD, is_active: 0 };
+      appData.crosshairs.push(newCh);
+      syncState();
+      return { ok: true, data: { id: newCh.id } };
+    }
+    return result;
+  },
   deleteCrosshair(id) { return this.call("deleteCrosshair", id); },
-  savePosition(obj) { return this.call("savePosition", JSON.stringify(obj)); },
-  resetPosition() { return this.call("resetPosition"); },
+  async savePosition(obj) {
+    const result = await this.call("savePosition", JSON.stringify(obj));
+    if (appData) {
+      appData.position = obj;
+      syncState();
+    }
+    return result;
+  },
+  async resetPosition() {
+    const result = await this.call("resetPosition");
+    if (result && appData) {
+      appData.position = { x_offset: result.x_offset, y_offset: result.y_offset, scale: result.scale };
+      syncState();
+    }
+    return result;
+  },
 };
+
+// ─── Default Config & LocalStorage Persistence ───
+
+const DEFAULT_CONFIG = {
+  settings: { hidden: false, start_with_windows: false, hardware_acceleration: false, language: "en" },
+  display_mode: { mode: "windowed", resolution: "1920x1080", framerate_cap: 144 },
+  crosshairs: [
+    { id: 1, name: "Cross", type: "preset", svg_d: "M11 2v9H2v2h9v9h2v-9h9v-2h-9V2h-2z", is_active: 1 },
+    { id: 2, name: "Circle", type: "preset", svg_d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h4v2h-4v4h-2v-4H7v-2h4V7z", is_active: 0 },
+    { id: 3, name: "Dot", type: "preset", svg_d: "M12 8a4 4 0 100 8 4 4 0 000-8z", is_active: 0 },
+    { id: 4, name: "Diamond", type: "preset", svg_d: "M12 2L2 12l10 10 10-10L12 2zm0 16.5L5.5 12 12 5.5 18.5 12 12 18.5zM12 10.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z", is_active: 0 },
+    { id: 5, name: "Apex", type: "preset", svg_d: "M5 5l4 4m6-4l-4 4m4 10l-4-4m-6 4l4-4M12 11a1 1 0 100 2 1 1 0 000-2z", is_active: 0 },
+    { id: 6, name: "Tactical", type: "preset", svg_d: "M11 3v2h2V3h-2zM3 11v2h2v-2H3zm16 0v2h2v-2h-2zM11 19v2h2v-2h-2zM8 8l8 8M8 16l8-8M12 12", is_active: 0 },
+  ],
+  position: { x_offset: 0, y_offset: 0, scale: 1.0 },
+};
+
+const LS_KEY = "tactical_hud_config";
+
+function storeSave(data) {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch {}
+}
+
+function storeLoad() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+function syncState() {
+  if (appData) storeSave(appData);
+}
 
 // ─── Internationalization ───
 
@@ -542,11 +651,10 @@ async function loadCrosshairGrid() {
   grid.querySelectorAll(".crosshair-card").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const id = parseInt(btn.dataset.id, 10);
-      const result = await Native.activateCrosshair(id);
-      if (result) {
-        for (const c of appData.crosshairs) c.is_active = c.id === id ? 1 : 0;
-        loadCrosshairGrid();
-      }
+      await Native.activateCrosshair(id);
+      for (const c of appData.crosshairs) c.is_active = c.id === id ? 1 : 0;
+      syncState();
+      loadCrosshairGrid();
     });
   });
 
@@ -606,15 +714,15 @@ function renderPositionSize(container) {
   });
 
   document.getElementById("resetPosBtn").addEventListener("click", async () => {
-    const r = await Native.resetPosition();
-    if (r) {
-      document.getElementById("xSlider").value = r.x_offset;
-      document.getElementById("ySlider").value = r.y_offset;
-      document.getElementById("scaleSlider").value = r.scale;
-      updateSliderDisplay("xSlider", "xDisplay", "px");
-      updateSliderDisplay("ySlider", "yDisplay", "px");
-      updateSliderDisplay("scaleSlider", "scaleDisplay", "x");
-    }
+    const r = await Native.resetPosition() || { x_offset: 0, y_offset: 0, scale: 1.0 };
+    document.getElementById("xSlider").value = r.x_offset;
+    document.getElementById("ySlider").value = r.y_offset;
+    document.getElementById("scaleSlider").value = r.scale;
+    updateSliderDisplay("xSlider", "xDisplay", "px");
+    updateSliderDisplay("ySlider", "yDisplay", "px");
+    updateSliderDisplay("scaleSlider", "scaleDisplay", "x");
+    if (appData) appData.position = { x_offset: r.x_offset, y_offset: r.y_offset, scale: r.scale };
+    syncState();
   });
 
   document.getElementById("applyPosBtn").addEventListener("click", async () => {
@@ -716,7 +824,7 @@ function renderOptions(container) {
   document.querySelectorAll(".toggle-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const key = btn.dataset.key;
-      const active = btn.classList.contains("bg-primary");
+      const active = btn.classList.contains("bg-primary/20");
       await Native.saveSetting(key, !active);
       if (appData?.settings) appData.settings[key] = !active;
       applyToggleState(btn, !active);
@@ -726,9 +834,10 @@ function renderOptions(container) {
   document.getElementById("resetSettingsBtn")?.addEventListener("click", async () => {
     if (!confirm(t("Reset all settings to defaults?"))) return;
     await Native.saveSetting("reset", "true");
-    document.querySelectorAll(".toggle-btn").forEach((btn) => {
-      applyToggleState(btn, btn.dataset.key === "hidden");
-    });
+    appData = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    storeSave(appData);
+    const current = document.querySelector(".nav-link.active")?.dataset.screen || "display-modes";
+    navigate(current);
   });
 }
 
@@ -806,8 +915,12 @@ function renderFaq(question, answer) {
 // ─── Init ───
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Load data from C++
+  // Load data from Native bridge (C++) or localStorage (dev mode)
   appData = await Native.getData();
+  if (!appData) {
+    appData = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    storeSave(appData);
+  }
 
   // Apply saved language to static UI
   applyUILanguage();
