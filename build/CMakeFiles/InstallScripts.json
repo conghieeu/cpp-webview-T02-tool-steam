@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/cpp-webview/cpp-webview-T02/build/cmake_install.cmake",
+		"D:/cpp-webview/cpp-webview-T02/build/_deps/webview-build/cmake_install.cmake",
+		"D:/cpp-webview/cpp-webview-T02/build/_deps/webview-build/compatibility/cmake_install.cmake",
+		"D:/cpp-webview/cpp-webview-T02/build/_deps/webview-build/core/cmake_install.cmake",
+		"D:/cpp-webview/cpp-webview-T02/build/_deps/json-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

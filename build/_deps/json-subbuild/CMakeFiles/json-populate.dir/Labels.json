@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/json-populate"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/25846465a7c67f6280aa519c415d01cd/json-populate.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/2ee618db0069aaba605dd22fac55d69f/json-populate-complete.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-build.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-configure.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-download.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-install.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-patch.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-test.rule"
+		},
+		{
+			"file" : "D:/cpp-webview/cpp-webview-T02/build/_deps/json-subbuild/CMakeFiles/6bb576c810c4d51108d1739454034aae/json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"json-populate"
+		],
+		"name" : "json-populate"
+	}
+}

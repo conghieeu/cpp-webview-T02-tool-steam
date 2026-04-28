@@ -1,0 +1,150 @@
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/tmp/ixwebsocket-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-DOWNLOAD.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/tmp/ixwebsocket-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-UPDATE.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps\ixwebsocket-src
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/tmp/ixwebsocket-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-CONFIGURE.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps\ixwebsocket-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-BUILD.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps\ixwebsocket-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-INSTALL.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps\ixwebsocket-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\D2A6B60F127A4BF3870E3626A214006D\IXWEBSOCKET-POPULATE-TEST.RULE
+setlocal
+cd D:\cpp-webview\cpp-webview-T02\build\_deps\ixwebsocket-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\7CC9282564AC921E397B13A02A8BAF6A\IXWEBSOCKET-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/CMakeFiles/Debug/ixwebsocket-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/ixwebsocket-populate-prefix/src/ixwebsocket-populate-stamp/Debug/ixwebsocket-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKEFILES\C938116992FDED9B7F25FEAC16A4C6EF\IXWEBSOCKET-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\_DEPS\IXWEBSOCKET-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild -BD:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild --check-stamp-file D:/cpp-webview/cpp-webview-T02/build/_deps/ixwebsocket-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

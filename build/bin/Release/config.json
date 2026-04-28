@@ -1,0 +1,62 @@
+{
+  "crosshairs": [
+    {
+      "id": 1,
+      "is_active": 1,
+      "name": "Cross",
+      "svg_d": "M11 2v9H2v2h9v9h2v-9h9v-2h-9V2h-2z",
+      "type": "preset"
+    },
+    {
+      "id": 2,
+      "is_active": 0,
+      "name": "Circle",
+      "svg_d": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h4v2h-4v4h-2v-4H7v-2h4V7z",
+      "type": "preset"
+    },
+    {
+      "id": 3,
+      "is_active": 0,
+      "name": "Dot",
+      "svg_d": "M12 8a4 4 0 100 8 4 4 0 000-8z",
+      "type": "preset"
+    },
+    {
+      "id": 4,
+      "is_active": 0,
+      "name": "Diamond",
+      "svg_d": "M12 2L2 12l10 10 10-10L12 2zm0 16.5L5.5 12 12 5.5 18.5 12 12 18.5zM12 10.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z",
+      "type": "preset"
+    },
+    {
+      "id": 5,
+      "is_active": 0,
+      "name": "Apex",
+      "svg_d": "M5 5l4 4m6-4l-4 4m4 10l-4-4m-6 4l4-4M12 11a1 1 0 100 2 1 1 0 000-2z",
+      "type": "preset"
+    },
+    {
+      "id": 6,
+      "is_active": 0,
+      "name": "Tactical",
+      "svg_d": "M11 3v2h2V3h-2zM3 11v2h2v-2H3zm16 0v2h2v-2h-2zM11 19v2h2v-2h-2zM8 8l8 8M8 16l8-8M12 12",
+      "type": "preset"
+    }
+  ],
+  "display_mode": {
+    "framerate_cap": 144,
+    "mode": "windowed",
+    "resolution": "1920x1080"
+  },
+  "position": {
+    "scale": 1.0,
+    "x_offset": 0,
+    "y_offset": 0
+  },
+  "settings": {
+    "hardware_acceleration": "false",
+    "hidden": "false",
+    "language": "en",
+    "start_with_windows": "false"
+  }
+}

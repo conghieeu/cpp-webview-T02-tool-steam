@@ -1,0 +1,10 @@
+^D:\CPP-WEBVIEW\CPP-WEBVIEW-T02\BUILD\CMAKEFILES\3946B0F9F022D615BB0A1813EFFADB6F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/cpp-webview/cpp-webview-T02 -BD:/cpp-webview/cpp-webview-T02/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/cpp-webview/cpp-webview-T02/build/app.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
